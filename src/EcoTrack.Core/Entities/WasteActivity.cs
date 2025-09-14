@@ -8,4 +8,6 @@ namespace EcoTrack.Core.Entities
 
         public double CalculateEmissions() => Amount * EmissionFactor;
     }
+
+
 }
