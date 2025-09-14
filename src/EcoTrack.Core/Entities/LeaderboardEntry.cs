@@ -2,15 +2,16 @@ namespace EcoTrack.Core.Entities
 {
     public class LeaderboardEntry
     {
-        public Guid EntryId { get; set; }
-        public Guid UserId { get; set; }
+        // RENAMED: from EntryId to LeaderboardEntryId to follow convention
+        public int LeaderboardEntryId { get; set; }
 
         public int Rank { get; set; }
-        public string Period { get; set; } = string.Empty; // Weekly, Monthly
-        public double CarbonEmission { get; set; } // total kg CO₂
-        public Guid? CommunityId { get; set; } // optional group leaderboard
+        public string Period { get; set; } = string.Empty; // e.g., "Weekly", "Monthly"
+        public decimal CarbonEmission { get; set; }
+        public int? CommunityId { get; set; } // Optional for group leaderboards
 
-        // Navigation property
+        // Foreign Key to User
+        public int UserId { get; set; }
         public User? User { get; set; }
     }
 }

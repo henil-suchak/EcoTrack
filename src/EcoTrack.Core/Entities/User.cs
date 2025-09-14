@@ -4,17 +4,11 @@ namespace EcoTrack.Core.Entities
     {
         public int UserId { get; set; }
         public string Name { get; set; } = string.Empty;
-        public int Age { get; set; }
-        public string Email { get; set; } = string.Empty;
-        public string PasswordHash { get; set; } = string.Empty;
-        public string Location { get; set; } = string.Empty; // e.g., "Nadiad, India"
-        
-        // These could be simple strings or mapped to complex types later
-        public string? LifestylePreferences { get; set; } // Could be JSON
-        public string? ConnectedAccounts { get; set; } // Could be JSON
+        // ... other properties
 
         // Foreign Key for Family
         public int? FamilyId { get; set; }
+        // Navigation property - ADD THIS LINE
         public Family? Family { get; set; }
 
         // Navigation properties
