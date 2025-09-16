@@ -25,6 +25,12 @@ builder.Services.AddDbContext<EcoTrackDbContext>(options =>
 builder.Services.AddScoped<IUserRepository, UserRepository>();
 builder.Services.AddScoped<IActivityRepository, ActivityRepository>();
 builder.Services.AddScoped<IUnitOfWork, UnitOfWork>();
+builder.Services.AddScoped<ITravelActivityRepository, TravelActivityRepository>();
+builder.Services.AddScoped<IFoodActivityRepository, FoodActivityRepository>();
+builder.Services.AddScoped<IElectricityActivityRepository, ElectricityActivityRepository>();
+builder.Services.AddScoped<IApplianceActivityRepository, ApplianceActivityRepository>();
+builder.Services.AddScoped<IWasteActivityRepository, WasteActivityRepository>();
+
 // ----------------------
 
 var app = builder.Build();
