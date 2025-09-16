@@ -3,7 +3,7 @@ namespace EcoTrack.Core.Entities
     public class Badge
     {
         // CORRECTED: Changed from Guid to int for consistency
-        public int BadgeId { get; set; }
+        public Guid BadgeId { get; set; }
         
         public string Name { get; set; } = string.Empty;
         public string Description { get; set; } = string.Empty;
@@ -12,7 +12,7 @@ namespace EcoTrack.Core.Entities
         public DateTime DateEarned { get; set; }
 
         // CORRECTED: Changed from Guid to int to match the User's primary key
-        public int UserId { get; set; }
+        public Guid UserId { get; set; }
 
         // This navigation property is correct!
         public User? User { get; set; }

@@ -1,6 +1,9 @@
+// --- Required using statements ---
 using EcoTrack.Web.Components;
 using Microsoft.EntityFrameworkCore;
 using EcoTrack.Data.Data;
+using EcoTrack.Core.Interfaces;
+using EcoTrack.Data.Repositories;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -8,12 +11,21 @@ var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddRazorComponents()
     .AddInteractiveServerComponents();
 
+// --- SERVICE REGISTRATION SECTION ---
+
 // Get the SQLite connection string
 var connectionString = builder.Configuration.GetConnectionString("DefaultConnection");
 
 // Register your DbContext to use SQLite
 builder.Services.AddDbContext<EcoTrackDbContext>(options =>
     options.UseSqlite(connectionString));
+
+// --- ADD THIS SECTION ---
+// Register your repositories and the Unit of Work.
+builder.Services.AddScoped<IUserRepository, UserRepository>();
+builder.Services.AddScoped<IActivityRepository, ActivityRepository>();
+builder.Services.AddScoped<IUnitOfWork, UnitOfWork>();
+// ----------------------
 
 var app = builder.Build();
 
@@ -25,10 +37,7 @@ if (!app.Environment.IsDevelopment())
 }
 
 app.UseHttpsRedirection();
-
-// REPLACED: .NET 9's 'MapStaticAssets' with .NET 8's 'UseStaticFiles'
 app.UseStaticFiles();
-
 app.UseAntiforgery();
 
 app.MapRazorComponents<App>()

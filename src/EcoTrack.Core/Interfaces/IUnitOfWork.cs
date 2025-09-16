@@ -7,6 +7,7 @@ namespace EcoTrack.Core.Interfaces
         // A read-only property that provides access to an IUserRepository.
         // The business logic will use this to get to the user-related database methods.
         IUserRepository Users { get; }
+        IActivityRepository Activities { get; } 
         
         // We will add properties for other repositories here later (e.g., IActivityRepository).
 
