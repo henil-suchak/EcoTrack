@@ -13,7 +13,11 @@ namespace EcoTrack.Data.Repositories
         // 'private set;' means it can only be assigned a value from within this class (in the constructor).
         public IUserRepository Users { get; private set; }
         public IActivityRepository Activities { get; private set; } // ADD THIS LINE
-
+        public ITravelActivityRepository TravelActivities { get; private set; }
+        public IFoodActivityRepository FoodActivities { get; private set; }
+        public IElectricityActivityRepository ElectricityActivities { get; private set; }
+        public IApplianceActivityRepository ApplianceActivities { get; private set; }
+        public IWasteActivityRepository WasteActivities { get; private set; }
         // The constructor receives the DbContext via dependency injection.
         public UnitOfWork(EcoTrackDbContext context)
         {
@@ -24,6 +28,11 @@ namespace EcoTrack.Data.Repositories
             // share the exact same database session and transaction.
             Users = new UserRepository(_context);
             Activities = new ActivityRepository(_context);
+            TravelActivities = new TravelActivityRepository(_context);
+            FoodActivities = new FoodActivityRepository(_context);
+            ElectricityActivities = new ElectricityActivityRepository(_context);
+            ApplianceActivities = new ApplianceActivityRepository(_context);
+            WasteActivities = new WasteActivityRepository(_context);
         }
 
         // This is the implementation of the save method.

@@ -8,7 +8,11 @@ namespace EcoTrack.Core.Interfaces
         // The business logic will use this to get to the user-related database methods.
         IUserRepository Users { get; }
         IActivityRepository Activities { get; } 
-        
+        ITravelActivityRepository TravelActivities { get; }
+        IFoodActivityRepository FoodActivities { get; }
+        IElectricityActivityRepository ElectricityActivities { get; }
+        IApplianceActivityRepository ApplianceActivities { get; }
+        IWasteActivityRepository WasteActivities { get; }
         // We will add properties for other repositories here later (e.g., IActivityRepository).
 
         // Declares a single method to save ALL changes made during a business transaction.
